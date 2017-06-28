@@ -7,8 +7,8 @@ export class UserService {
 
   users: User[] = [];
 
-  private serverResponse = '{ "email": [ "can\'t be blank" ], "first_name": [ "can\'t be blank" ], "last_name": [ "can\'t be blank" ] }'; 
-  private userDictionary = { 
+  private serverResponse = '{ "email": [ "can\'t be blank" ], "first_name": [ "can\'t be blank" ], "last_name": [ "can\'t be blank" ] }';
+  private userDictionary = {
     1: '{ "id": 1, "buyer_id": 1, "first_name": "Fred", "last_name": "Flintstone", "email": "fred.flintstone@slaterockandgravel.com" }',
     2: '{ "id": 2, "buyer_id": 2, "first_name": "Barney", "last_name": "Rubble", "email": "barney.rubble@slaterockandgravel.com" }',
     3: '{ "id": 3, "buyer_id": 3, "first_name": "Wilma", "last_name": "Flintstone", "email": "wilma.flinstone@dailygranite.com" }'
@@ -29,4 +29,20 @@ export class UserService {
     console.error('service found an error: '+error);
   }
 
+  getErrorResponse(){
+    return this.serverResponse;
+  }
+
+  addUser(data){
+
+    let key = Object.keys(this.userDictionary).length;
+    let userObj={
+      id:key+1,
+      buyer_id:key+1,
+      first_name :data.firstName,
+      last_name :data.lastName,
+      email:data.email
+    };
+    this.userDictionary[key+1]  = JSON.stringify(userObj);
+  }
 }

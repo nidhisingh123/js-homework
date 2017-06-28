@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -18,6 +18,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { LogoutComponent } from './account/logout.component';
 import { UserDetailComponent } from './user/detail.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import {UserService} from "./user.service";
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { NewUserComponent } from './new-user/new-user.component';
     AppRoutingModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     MdButtonModule,
     MdCardModule,
@@ -41,7 +44,7 @@ import { NewUserComponent } from './new-user/new-user.component';
     MdToolbarModule,
     NoopAnimationsModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

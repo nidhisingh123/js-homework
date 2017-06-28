@@ -1,3 +1,52 @@
-<p>
-  new-user works!
-</p>
+<md-card>
+  <md-card-header>
+    <md-icon md-card-avatar color="accent">account_box</md-icon>
+    <md-card-title><h3>Add User</h3></md-card-title>
+  </md-card-header>
+  <md-card-content>
+
+    <form class="user-form" [formGroup]="userForm" (ngSubmit)="submit(userForm)">
+
+      <table class="user-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <md-input-container class="user-full-width">
+              <input mdInput placeholder="First Name" [formControl]="userForm.controls['firstName']">
+              <md-error *ngIf="userForm.controls['email'].hasError('required')">
+                {{errorResponse.first_name}}
+              </md-error>
+            </md-input-container>
+
+          </td>
+          <td>
+            <md-input-container class="user-full-width">
+              <input mdInput placeholder="Last Name" [formControl]="userForm.controls['lastName']">
+              <md-error *ngIf="userForm.controls['email'].hasError('required')">
+                {{errorResponse.last_name}}
+              </md-error>
+            </md-input-container>
+          </td>
+        </tr>
+      </table>
+
+      <md-input-container class="user-full-width">
+        <input mdInput placeholder="Email" [formControl]="userForm.controls['email']">
+
+        <md-error *ngIf="userForm.controls['email'].hasError('required')">
+          {{errorResponse.email}}
+        </md-error>
+        <md-error *ngIf="userForm.controls['email'].hasError('pattern')">
+          Please enter a valid email address
+        </md-error>
+
+      </md-input-container>
+
+      <button type="submit" md-raised-button color="accent" [disabled]="userForm.status =='INVALID'">Submit</button>
+
+    </form>
+
+  </md-card-content>
+</md-card>
+
+
+
