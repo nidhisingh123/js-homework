@@ -17,6 +17,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LogoutComponent } from './account/logout.component';
 import { UserDetailComponent } from './user/detail.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserDetailComponent } from './user/detail.component';
     DashboardComponent,
     UserInfoComponent,
     LogoutComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    NewUserComponent
   ],
   imports: [
     AppRoutingModule,
